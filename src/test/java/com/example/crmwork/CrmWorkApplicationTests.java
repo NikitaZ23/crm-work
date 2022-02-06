@@ -9,7 +9,7 @@ class CrmWorkApplicationTests {
 
 	@Test
 	void contextLoads() {
-		System.out.println("TEST");
+
 	}
 
 }

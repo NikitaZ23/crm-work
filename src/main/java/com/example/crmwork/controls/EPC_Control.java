@@ -42,7 +42,7 @@ public class EPC_Control {
         return ResponseEntity.ok().build();
     }
 
-    @PostMapping("/client")
+    @PostMapping("/client2")
     ResponseEntity<Void> createClient(@RequestParam(value = "name") String name,
                                       @RequestParam(value = "family") String family,
                                       @RequestParam(value = "oth") String oth,
@@ -76,7 +76,7 @@ public class EPC_Control {
         return ResponseEntity.ok().build();
     }
 
-    @PostMapping("/employee")
+    @PostMapping("/employee2")
     ResponseEntity<Void> createEmp(@RequestParam(value = "name") String name,
                                       @RequestParam(value = "family") String family,
                                       @RequestParam(value = "oth") String oth,
@@ -85,7 +85,7 @@ public class EPC_Control {
                                       @RequestParam(value = "mary") Boolean mary,
                                       @RequestParam(value = "date") Date date){
 
-        employeesS.createEmployee(new Employees(name, family,oth,years,sex,mary,date));
+        employeesS.createEmployee(new Employees(name,family,oth,years,sex,mary,date));
 
         return ResponseEntity.ok().build();
     }
@@ -113,7 +113,7 @@ public class EPC_Control {
         return ResponseEntity.ok().build();
     }
 
-    @PostMapping("/project")
+    @PostMapping("/project2")
     ResponseEntity<Void> createProject(@RequestParam(value = "name") String name,
                                    @RequestParam(value = "dedlain") Date dedlain,
                                    @RequestParam(value = "client") UUID client){

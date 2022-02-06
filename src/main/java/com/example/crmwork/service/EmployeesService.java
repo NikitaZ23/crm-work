@@ -21,6 +21,7 @@ public class EmployeesService {
     }
 
     public void createEmployee(Employees employees){
+        System.out.println(employees);
         employeesRepos.save(employees);
     }
 
