@@ -1,9 +1,12 @@
 package com.example.crmwork.domain;
 
+import lombok.NoArgsConstructor;
+
 import javax.persistence.*;
 import java.util.UUID;
 
 @Entity
+@NoArgsConstructor
 public class Clients {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -30,9 +33,6 @@ public class Clients {
         this.oth = oth;
         this.year = year;
         this.sex = sex;
-    }
-
-    public Clients() {
     }
 
     public String getName() {

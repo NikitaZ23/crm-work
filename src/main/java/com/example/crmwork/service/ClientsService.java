@@ -12,29 +12,34 @@ import java.util.UUID;
 public class ClientsService {
 
     @Autowired
-    ClientsRepos repos;
+    ClientsRepos clRepos;
+
+    @Autowired
+    EPCService epcService;
 
     public ClientsService(ClientsRepos repos) {
-        this.repos = repos;
+        this.clRepos = repos;
     }
 
     public void createClient(Clients clients){
-        repos.save(clients);
+        clRepos.save(clients);
     }
 
     public void deleteClient(Clients clients){
-        repos.delete(clients);
+        epcService.findByIDC(clients.getId()).forEach(epc -> epcService.deleteEPC(epc));
+        clRepos.delete(clients);
     }
 
     public void deleteClients(){
-        repos.deleteAll();
+        clRepos.findAll().forEach(clients -> epcService.findByIDC(clients.getId()).forEach(epc -> epcService.deleteEPC(epc)));
+        clRepos.deleteAll();
     }
 
     public List<Clients> findAll(){
-        return repos.findAll();
+        return clRepos.findAll();
     }
 
     public Clients findByID(UUID uid){
-        return repos.findById(uid).orElse(null);
+        return clRepos.findById(uid).orElse(null);
     }
 }

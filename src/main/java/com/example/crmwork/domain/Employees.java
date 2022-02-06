@@ -1,11 +1,14 @@
 package com.example.crmwork.domain;
 
+import lombok.NoArgsConstructor;
+
 import javax.persistence.*;
-import java.sql.Date;
+import java.util.Date;
 import java.util.UUID;
 
 
 @Entity
+@NoArgsConstructor
 public class Employees {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -29,11 +32,9 @@ public class Employees {
     @Column(name = "mary")
     Boolean mary;
 
-    @Column(name = "data")
+    @Column(name = "date")
     Date date;
 
-    public Employees() {
-    }
 
     public Employees(String name, String family, String oth, int year, String sex, Boolean mary, Date date) {
         this.name = name;
@@ -43,6 +44,10 @@ public class Employees {
         this.sex = sex;
         this.mary = mary;
         this.date = date;
+    }
+
+    public UUID getId() {
+        return id;
     }
 
     public String getName() {
@@ -93,11 +98,11 @@ public class Employees {
         this.mary = mary;
     }
 
-    public Date getData() {
+    public Date getDate() {
         return date;
     }
 
-    public void setData(Date date) {
+    public void setDate(Date date) {
         this.date = date;
     }
 }

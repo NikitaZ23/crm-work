@@ -1,10 +1,13 @@
 package com.example.crmwork.domain;
 
+import lombok.NoArgsConstructor;
+
 import javax.persistence.*;
 import java.util.Date;
 import java.util.UUID;
 
 @Entity
+@NoArgsConstructor
 public class Projects {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -24,9 +27,6 @@ public class Projects {
         this.name = name;
         this.dedlain = dedlain;
         this.clients = clients;
-    }
-
-    public Projects() {
     }
 
     public String getName() {

@@ -21,6 +21,10 @@ public class EPCService {
         repos.save(epc);
     }
 
+    public void deleteEPC(EPC epc){
+        repos.delete(epc);
+    }
+
     public void deleteAll(){
         repos.deleteAll();
     }
@@ -35,6 +39,10 @@ public class EPCService {
 
     public List<EPC> findByIDE(UUID id_e){
         return repos.findByIde(id_e);
+    }
+
+    public List<EPC> findByIDC(UUID id_c){
+        return repos.findByIdc(id_c);
     }
 
     public List<EPC> findAll(){

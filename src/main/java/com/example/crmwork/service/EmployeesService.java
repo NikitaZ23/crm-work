@@ -11,29 +11,34 @@ import java.util.UUID;
 @Service
 public class EmployeesService {
     @Autowired
-    EmployeesRepos repos;
+    EmployeesRepos employeesRepos;
+
+    @Autowired
+    EPCService epcService;
 
     public EmployeesService(EmployeesRepos repos) {
-        this.repos = repos;
+        this.employeesRepos = repos;
     }
 
     public void createEmployee(Employees employees){
-        repos.save(employees);
+        employeesRepos.save(employees);
     }
 
     public void deleteEmployee(Employees employees){
-        repos.delete(employees);
+        epcService.findByIDE(employees.getId()).forEach(epc -> epcService.deleteEPC(epc));
+        employeesRepos.delete(employees);
     }
 
     public void deleteAll(){
-        repos.deleteAll();
+        employeesRepos.findAll().forEach(employees -> epcService.findByIDE(employees.getId()).forEach(epc -> epcService.deleteEPC(epc)));
+        employeesRepos.deleteAll();
     }
 
     public List<Employees> findAll(){
-        return repos.findAll();
+        return employeesRepos.findAll();
     }
 
     public Employees findById(UUID id){
-        return repos.findById(id).orElse(null);
+        return employeesRepos.findById(id).orElse(null);
     }
 }
