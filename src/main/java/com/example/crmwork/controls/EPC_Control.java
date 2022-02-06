@@ -31,6 +31,13 @@ public class EPC_Control {
     ProjectsService projectsS;
 
     //////////////////////////////////////////////////////////////////////////////////////////////////
+
+    @RequestMapping("/")
+    public @ResponseBody String greeting() {
+        return "Hello, World";
+    }
+
+    //////////////////////////////////////////////////////////////////////////////////////////////////
     @GetMapping("/clients")
     List<Clients> getAllClients() {
         return clientsS.findAll();

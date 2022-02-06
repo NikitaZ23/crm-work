@@ -3,6 +3,7 @@ package com.example.crmwork.domain;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.util.Locale;
 import java.util.UUID;
 
 @Entity
@@ -32,7 +33,7 @@ public class Clients {
         this.family = family;
         this.oth = oth;
         this.year = year;
-        this.sex = sex;
+        this.sex = sex.toLowerCase(Locale.ROOT);
     }
 
     public String getName() {

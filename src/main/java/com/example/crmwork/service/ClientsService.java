@@ -42,4 +42,8 @@ public class ClientsService {
     public Clients findByID(UUID uid){
         return clRepos.findById(uid).orElse(null);
     }
+
+    public List<Clients> findByName(String name){
+        return clRepos.findByName(name);
+    }
 }

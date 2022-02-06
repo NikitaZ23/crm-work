@@ -4,6 +4,7 @@ import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import java.util.Date;
+import java.util.Locale;
 import java.util.UUID;
 
 
@@ -41,7 +42,7 @@ public class Employees {
         this.family = family;
         this.oth = oth;
         this.year = year;
-        this.sex = sex;
+        this.sex = sex.toLowerCase(Locale.ROOT);
         this.mary = mary;
         this.date = date;
     }
