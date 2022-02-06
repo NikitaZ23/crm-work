@@ -2,6 +2,7 @@ package com.example.crmwork.controls;
 
 import com.example.crmwork.domain.Clients;
 import com.example.crmwork.domain.Employees;
+import com.example.crmwork.domain.Projects;
 import com.example.crmwork.service.ClientsService;
 import com.example.crmwork.service.EPCService;
 import com.example.crmwork.service.EmployeesService;
@@ -12,6 +13,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.Date;
 import java.util.List;
+import java.util.UUID;
 
 @RestController
 @RequestMapping("/epc")
@@ -97,6 +99,38 @@ public class EPC_Control {
     @DeleteMapping("/employees")
     ResponseEntity<Void> deleteEmps(){
         employeesS.deleteAll();
+        return ResponseEntity.ok().build();
+    }
+    //////////////////////////////////////////////////////////////////////////////////////////////////
+    @GetMapping("/projects")
+    List<Projects> getAllProjects() {
+        return projectsS.findAll();
+    }
+
+    @PostMapping("/project")
+    ResponseEntity<Void> createProject(@RequestBody Projects project){
+        projectsS.createPr(project);
+        return ResponseEntity.ok().build();
+    }
+
+    @PostMapping("/project")
+    ResponseEntity<Void> createProject(@RequestParam(value = "name") String name,
+                                   @RequestParam(value = "dedlain") Date dedlain,
+                                   @RequestParam(value = "client") UUID client){
+
+        projectsS.createPr(new Projects(name,dedlain,client));
+        return ResponseEntity.ok().build();
+    }
+
+    @DeleteMapping("/project")
+    ResponseEntity<Void> deleteProject(@RequestBody Projects projects){
+        projectsS.deletePr(projects);
+        return ResponseEntity.ok().build();
+    }
+
+    @DeleteMapping("/projects")
+    ResponseEntity<Void> deleteProjects(){
+        projectsS.deleteAll();
         return ResponseEntity.ok().build();
     }
     //////////////////////////////////////////////////////////////////////////////////////////////////

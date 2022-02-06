@@ -29,6 +29,10 @@ public class Projects {
         this.clients = clients;
     }
 
+    public UUID getId() {
+        return id;
+    }
+
     public String getName() {
         return name;
     }
