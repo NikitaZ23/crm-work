@@ -46,4 +46,9 @@ class CrmWorkApplicationTests {
 				String.class)).contains("Hello, World");
 		System.out.println(port);
 	}
+
+	@Test
+	public void createClient(){
+
+	}
 }
