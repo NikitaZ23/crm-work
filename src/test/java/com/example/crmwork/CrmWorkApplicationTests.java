@@ -2,11 +2,13 @@ package com.example.crmwork;
 
 import com.example.crmwork.controls.EPC_Control;
 import com.example.crmwork.domain.Clients;
+import org.json.JSONObject;
 import org.junit.jupiter.api.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.http.MediaType;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.util.MultiValueMap;
@@ -41,7 +43,7 @@ class CrmWorkApplicationTests {
 	}
 
 	@Test
-	public void greetingShouldReturnDefaultMessage() throws Exception {
+	public void getMain() throws Exception {
 		this.mockMvc.perform(get("/epc/"))
 				.andDo(print())
 				.andExpect(status().isOk())
@@ -57,12 +59,51 @@ class CrmWorkApplicationTests {
 		clients.setYear(2);
 		clients.setSex("male");
 
+		StringBuilder builder = new StringBuilder();
+		builder.append("{");
+		builder.append("\"name\"");
+		builder.append(":");
+		builder.append("\"");
+		builder.append(clients.getName());
+		builder.append("\"");
+		builder.append(",");
+		builder.append("\"family\"");
+		builder.append(":");
+		builder.append("\"");
+		builder.append(clients.getFamily());
+		builder.append("\"");
+		builder.append(",");
+		builder.append("\"oth\"");
+		builder.append(":");
+		builder.append("\"");
+		builder.append(clients.getOth());
+		builder.append("\"");
+		builder.append(",");
+		builder.append("\"years\"");
+		builder.append(":");
+		builder.append(clients.getYear());
+		builder.append(",");
+		builder.append("\"sex\"");
+		builder.append(":");
+		builder.append("\"");
+		builder.append(clients.getSex());
+		builder.append("\"");
+		builder.append("}");
+
+		System.out.println(builder);
+
 		this.mockMvc.perform(post("/epc/client")
-						.param("name", clients.getName())
-						.param("family", clients.getFamily())
-						.param("oth", clients.getOth())
-//						.param("years", String.valueOf(clients.getYear()))
-						.param("sex", clients.getSex()))
+						.contentType(MediaType.APPLICATION_JSON)
+						.accept(MediaType.APPLICATION_JSON)
+						.content(builder.toString()))
+						.andDo(print())
+						.andExpect(status().isOk());
+
+	}
+
+	@Test
+	public void getClients() throws Exception {
+		this.mockMvc.perform(get("/epc/clients"))
 				.andDo(print())
 				.andExpect(status().isOk());
 	}

@@ -23,12 +23,12 @@ public class Clients {
     String oth;
 
     @Column(name = "year")
-    int year;
+    Integer year;
 
     @Column(name = "sex")
     String sex;
 
-    public Clients(String name, String family, String oth, int year, String sex) {
+    public Clients(String name, String family, String oth, Integer year, String sex) {
         this.name = name;
         this.family = family;
         this.oth = oth;
@@ -64,11 +64,11 @@ public class Clients {
         this.oth = oth;
     }
 
-    public int getYear() {
+    public Integer getYear() {
         return year;
     }
 
-    public void setYear(int year) {
+    public void setYear(Integer year) {
         this.year = year;
     }
 
