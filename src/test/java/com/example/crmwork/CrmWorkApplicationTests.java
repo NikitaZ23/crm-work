@@ -81,7 +81,9 @@ class CrmWorkApplicationTests {
 		builder.append(",");
 		builder.append("\"years\"");
 		builder.append(":");
+		builder.append("\"");
 		builder.append(clients.getYear());
+		builder.append("\"");
 		builder.append(",");
 		builder.append("\"sex\"");
 		builder.append(":");

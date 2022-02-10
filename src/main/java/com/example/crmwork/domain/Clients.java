@@ -23,16 +23,16 @@ public class Clients {
     String oth;
 
     @Column(name = "year")
-    Integer year;
+    String year;
 
     @Column(name = "sex")
     String sex;
 
-    public Clients(String name, String family, String oth, Integer year, String sex) {
+    public Clients(String name, String family, String oth, int year, String sex) {
         this.name = name;
         this.family = family;
         this.oth = oth;
-        this.year = year;
+        this.year = String.valueOf(year);
         this.sex = sex.toLowerCase(Locale.ROOT);
     }
 
@@ -64,12 +64,12 @@ public class Clients {
         this.oth = oth;
     }
 
-    public Integer getYear() {
-        return year;
+    public int getYear() {
+        return Integer.parseInt(year);
     }
 
-    public void setYear(Integer year) {
-        this.year = year;
+    public void setYear(int year) {
+        this.year = String.valueOf(year);
     }
 
     public String getSex() {
