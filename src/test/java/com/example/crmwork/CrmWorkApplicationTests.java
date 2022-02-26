@@ -50,58 +50,58 @@ class CrmWorkApplicationTests {
 				.andExpect(content().string(containsString("Hello, World")));
 	}
 
-	@Test
-	public void createClient() throws Exception {
-		Clients clients = new Clients();
-		clients.setName("Alex");
-		clients.setFamily("A");
-		clients.setOth("Al");
-		clients.setYear(2);
-		clients.setSex("male");
-
-		StringBuilder builder = new StringBuilder();
-		builder.append("{");
-		builder.append("\"name\"");
-		builder.append(":");
-		builder.append("\"");
-		builder.append(clients.getName());
-		builder.append("\"");
-		builder.append(",");
-		builder.append("\"family\"");
-		builder.append(":");
-		builder.append("\"");
-		builder.append(clients.getFamily());
-		builder.append("\"");
-		builder.append(",");
-		builder.append("\"oth\"");
-		builder.append(":");
-		builder.append("\"");
-		builder.append(clients.getOth());
-		builder.append("\"");
-		builder.append(",");
-		builder.append("\"years\"");
-		builder.append(":");
-		builder.append("\"");
-		builder.append(clients.getYear());
-		builder.append("\"");
-		builder.append(",");
-		builder.append("\"sex\"");
-		builder.append(":");
-		builder.append("\"");
-		builder.append(clients.getSex());
-		builder.append("\"");
-		builder.append("}");
-
-		System.out.println(builder);
-
-		this.mockMvc.perform(post("/epc/client")
-						.contentType(MediaType.APPLICATION_JSON)
-						.accept(MediaType.APPLICATION_JSON)
-						.content(builder.toString()))
-						.andDo(print())
-						.andExpect(status().isOk());
-
-	}
+//	@Test
+//	public void createClient() throws Exception {
+//		Clients clients = new Clients();
+//		clients.setName("Alex");
+//		clients.setFamily("A");
+//		clients.setOth("Al");
+//		clients.setYear(2);
+//		clients.setSex("male");
+//
+//		StringBuilder builder = new StringBuilder();
+//		builder.append("{");
+//		builder.append("\"name\"");
+//		builder.append(":");
+//		builder.append("\"");
+//		builder.append(clients.getName());
+//		builder.append("\"");
+//		builder.append(",");
+//		builder.append("\"family\"");
+//		builder.append(":");
+//		builder.append("\"");
+//		builder.append(clients.getFamily());
+//		builder.append("\"");
+//		builder.append(",");
+//		builder.append("\"oth\"");
+//		builder.append(":");
+//		builder.append("\"");
+//		builder.append(clients.getOth());
+//		builder.append("\"");
+//		builder.append(",");
+//		builder.append("\"years\"");
+//		builder.append(":");
+//		builder.append("\"");
+//		builder.append(clients.getYear());
+//		builder.append("\"");
+//		builder.append(",");
+//		builder.append("\"sex\"");
+//		builder.append(":");
+//		builder.append("\"");
+//		builder.append(clients.getSex());
+//		builder.append("\"");
+//		builder.append("}");
+//
+//		System.out.println(builder);
+//
+//		this.mockMvc.perform(post("/epc/client")
+//						.contentType(MediaType.APPLICATION_JSON)
+//						.accept(MediaType.APPLICATION_JSON)
+//						.content(builder.toString()))
+//						.andDo(print())
+//						.andExpect(status().isOk());
+//
+//	}
 
 	@Test
 	public void getClients() throws Exception {

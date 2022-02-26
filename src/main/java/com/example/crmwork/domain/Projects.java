@@ -8,10 +8,8 @@ import java.util.List;
 import java.util.UUID;
 
 @Entity
-@Getter
 @Setter
-@RequiredArgsConstructor
-@AllArgsConstructor
+@Getter
 @NoArgsConstructor
 public class Projects {
     @Id
@@ -24,7 +22,18 @@ public class Projects {
     @Column(name = "dedlain")
     Date dedlain;
 
-    @OneToMany
+
     @Column(name = "client")
-    List<UUID> clients;
+    UUID clients;
+
+    //@OneToMany
+    @Column(name = "employees")
+    UUID employees;
+
+    public Projects(String name, Date dedlain, UUID clients, UUID employees) {
+        this.name = name;
+        this.dedlain = dedlain;
+        this.clients = clients;
+        this.employees = employees;
+    }
 }
