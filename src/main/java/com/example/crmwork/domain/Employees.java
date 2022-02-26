@@ -1,14 +1,19 @@
 package com.example.crmwork.domain;
 
-import lombok.NoArgsConstructor;
+import lombok.*;
+import org.hibernate.Hibernate;
 
 import javax.persistence.*;
 import java.util.Date;
-import java.util.Locale;
+import java.util.Objects;
 import java.util.UUID;
 
-
+@Getter
+@Setter
+@ToString
+@RequiredArgsConstructor
 @Entity
+@AllArgsConstructor
 @NoArgsConstructor
 public class Employees {
     @Id
@@ -36,74 +41,16 @@ public class Employees {
     @Column(name = "date")
     Date date;
 
-
-    public Employees(String name, String family, String oth, int year, String sex, Boolean mary, Date date) {
-        this.name = name;
-        this.family = family;
-        this.oth = oth;
-        this.year = year;
-        this.sex = sex.toLowerCase(Locale.ROOT);
-        this.mary = mary;
-        this.date = date;
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || Hibernate.getClass(this) != Hibernate.getClass(o)) return false;
+        Employees employees = (Employees) o;
+        return id != null && Objects.equals(id, employees.id);
     }
 
-    public UUID getId() {
-        return id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getFamily() {
-        return family;
-    }
-
-    public void setFamily(String family) {
-        this.family = family;
-    }
-
-    public String getOth() {
-        return oth;
-    }
-
-    public void setOth(String oth) {
-        this.oth = oth;
-    }
-
-    public int getYear() {
-        return year;
-    }
-
-    public void setYear(int year) {
-        this.year = year;
-    }
-
-    public String getSex() {
-        return sex;
-    }
-
-    public void setSex(String sex) {
-        this.sex = sex;
-    }
-
-    public Boolean getMary() {
-        return mary;
-    }
-
-    public void setMary(Boolean mary) {
-        this.mary = mary;
-    }
-
-    public Date getDate() {
-        return date;
-    }
-
-    public void setDate(Date date) {
-        this.date = date;
+    @Override
+    public int hashCode() {
+        return getClass().hashCode();
     }
 }

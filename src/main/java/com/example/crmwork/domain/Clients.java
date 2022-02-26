@@ -1,12 +1,19 @@
 package com.example.crmwork.domain;
 
-import lombok.NoArgsConstructor;
+import lombok.*;
+import org.hibernate.Hibernate;
 
 import javax.persistence.*;
 import java.util.Locale;
+import java.util.Objects;
 import java.util.UUID;
 
 @Entity
+@Getter
+@Setter
+@ToString
+@RequiredArgsConstructor
+@AllArgsConstructor
 @NoArgsConstructor
 public class Clients {
     @Id
@@ -36,47 +43,16 @@ public class Clients {
         this.sex = sex.toLowerCase(Locale.ROOT);
     }
 
-    public String getName() {
-        return name;
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || Hibernate.getClass(this) != Hibernate.getClass(o)) return false;
+        Clients clients = (Clients) o;
+        return id != null && Objects.equals(id, clients.id);
     }
 
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public UUID getId() {
-        return id;
-    }
-
-    public String getFamily() {
-        return family;
-    }
-
-    public void setFamily(String family) {
-        this.family = family;
-    }
-
-    public String getOth() {
-        return oth;
-    }
-
-    public void setOth(String oth) {
-        this.oth = oth;
-    }
-
-    public int getYear() {
-        return Integer.parseInt(year);
-    }
-
-    public void setYear(int year) {
-        this.year = String.valueOf(year);
-    }
-
-    public String getSex() {
-        return sex;
-    }
-
-    public void setSex(String sex) {
-        this.sex = sex;
+    @Override
+    public int hashCode() {
+        return getClass().hashCode();
     }
 }

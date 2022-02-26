@@ -1,12 +1,19 @@
 package com.example.crmwork.domain;
 
-import lombok.NoArgsConstructor;
+import lombok.*;
+import org.hibernate.Hibernate;
 
 import javax.persistence.*;
 import java.util.Date;
+import java.util.Objects;
 import java.util.UUID;
 
 @Entity
+@Getter
+@Setter
+@ToString
+@RequiredArgsConstructor
+@AllArgsConstructor
 @NoArgsConstructor
 public class Projects {
     @Id
@@ -22,38 +29,16 @@ public class Projects {
     @Column(name = "client")
     UUID clients;
 
-
-    public Projects(String name, Date dedlain, UUID clients) {
-        this.name = name;
-        this.dedlain = dedlain;
-        this.clients = clients;
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || Hibernate.getClass(this) != Hibernate.getClass(o)) return false;
+        Projects projects = (Projects) o;
+        return id != null && Objects.equals(id, projects.id);
     }
 
-    public UUID getId() {
-        return id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public Date getDedlain() {
-        return dedlain;
-    }
-
-    public void setDedlain(Date dedlain) {
-        this.dedlain = dedlain;
-    }
-
-    public UUID getClients() {
-        return clients;
-    }
-
-    public void setClients(UUID clients) {
-        this.clients = clients;
+    @Override
+    public int hashCode() {
+        return getClass().hashCode();
     }
 }

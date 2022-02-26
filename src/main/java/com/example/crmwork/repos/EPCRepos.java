@@ -19,7 +19,4 @@ public interface EPCRepos extends JpaRepository<EPC, UUID> {
 
     @Query(value = "select * from epc where id_e = ?1 and id_p = ?2", nativeQuery = true)
     EPC findByIds(UUID id_e, UUID id_p);
-
-//    @Query(value = "select s.* from EPC s, products p where s.idp = p.id and p.name = ?1", nativeQuery = true)
-//    List<EPC> findAllByNameP(@Param("name") String name);
 }
