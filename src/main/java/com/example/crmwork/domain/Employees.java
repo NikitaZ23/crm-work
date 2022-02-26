@@ -10,7 +10,6 @@ import java.util.UUID;
 
 @Getter
 @Setter
-@ToString
 @RequiredArgsConstructor
 @Entity
 @AllArgsConstructor
@@ -40,17 +39,4 @@ public class Employees {
 
     @Column(name = "date")
     Date date;
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || Hibernate.getClass(this) != Hibernate.getClass(o)) return false;
-        Employees employees = (Employees) o;
-        return id != null && Objects.equals(id, employees.id);
-    }
-
-    @Override
-    public int hashCode() {
-        return getClass().hashCode();
-    }
 }

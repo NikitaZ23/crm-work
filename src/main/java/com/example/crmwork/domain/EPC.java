@@ -10,7 +10,6 @@ import java.util.UUID;
 
 @Getter
 @Setter
-@ToString
 @RequiredArgsConstructor
 @AllArgsConstructor
 @NoArgsConstructor
@@ -29,17 +28,4 @@ public class EPC {
 
     @Column(name = "id_c")
     UUID id_c;
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || Hibernate.getClass(this) != Hibernate.getClass(o)) return false;
-        EPC epc = (EPC) o;
-        return id != null && Objects.equals(id, epc.id);
-    }
-
-    @Override
-    public int hashCode() {
-        return getClass().hashCode();
-    }
 }
