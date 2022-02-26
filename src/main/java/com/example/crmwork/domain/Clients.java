@@ -35,14 +35,6 @@ public class Clients {
     @Column(name = "sex")
     String sex;
 
-    public Clients(String name, String family, String oth, int year, String sex) {
-        this.name = name;
-        this.family = family;
-        this.oth = oth;
-        this.year = String.valueOf(year);
-        this.sex = sex.toLowerCase(Locale.ROOT);
-    }
-
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
