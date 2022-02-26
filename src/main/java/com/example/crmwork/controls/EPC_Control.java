@@ -49,16 +49,16 @@ public class EPC_Control {
         return ResponseEntity.ok().build();
     }
 
-    @PostMapping("/client2")
-    ResponseEntity<Void> createClient(@RequestParam(value = "name") String name,
-                                      @RequestParam(value = "family") String family,
-                                      @RequestParam(value = "oth") String oth,
-                                      @RequestParam(value = "years") int years,
-                                      @RequestParam(value = "sex") String sex){
-
-        clientsS.createClient(new Clients(name,family,oth,years,sex));
-        return ResponseEntity.ok().build();
-    }
+//    @PostMapping("/client2")
+//    ResponseEntity<Void> createClient(@RequestParam(value = "name") String name,
+//                                      @RequestParam(value = "family") String family,
+//                                      @RequestParam(value = "oth") String oth,
+//                                      @RequestParam(value = "years") int years,
+//                                      @RequestParam(value = "sex") String sex){
+//
+//        clientsS.createClient(new Clients(name,family,oth,years,sex));
+//        return ResponseEntity.ok().build();
+//    }
 
     @DeleteMapping("/client")
     ResponseEntity<Void> deleteClient(@RequestBody Clients clients){
