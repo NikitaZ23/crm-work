@@ -9,6 +9,8 @@ import java.util.UUID;
 
 
 @NoArgsConstructor
+@Getter
+@Setter
 @Entity
 public class EPC {
     @Id
@@ -27,38 +29,6 @@ public class EPC {
     public EPC(UUID id_e, UUID id_p, UUID id_c) {
         this.id_e = id_e;
         this.id_p = id_p;
-        this.id_c = id_c;
-    }
-
-    public UUID getId() {
-        return id;
-    }
-
-    public void setId(UUID id) {
-        this.id = id;
-    }
-
-    public UUID getId_e() {
-        return id_e;
-    }
-
-    public void setId_e(UUID id_e) {
-        this.id_e = id_e;
-    }
-
-    public UUID getId_p() {
-        return id_p;
-    }
-
-    public void setId_p(UUID id_p) {
-        this.id_p = id_p;
-    }
-
-    public UUID getId_c() {
-        return id_c;
-    }
-
-    public void setId_c(UUID id_c) {
         this.id_c = id_c;
     }
 }

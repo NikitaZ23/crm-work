@@ -1,10 +1,11 @@
 package com.example.crmwork.domain;
 
-import lombok.*;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 import javax.persistence.*;
 import java.util.Date;
-import java.util.List;
 import java.util.UUID;
 
 @Entity
@@ -23,17 +24,8 @@ public class Projects {
     Date dedlain;
 
 
-    @Column(name = "client")
-    UUID clients;
-
-    //@OneToMany
-    @Column(name = "employees")
-    UUID employees;
-
-    public Projects(String name, Date dedlain, UUID clients, UUID employees) {
+    public Projects(String name, Date dedlain) {
         this.name = name;
         this.dedlain = dedlain;
-        this.clients = clients;
-        this.employees = employees;
     }
 }

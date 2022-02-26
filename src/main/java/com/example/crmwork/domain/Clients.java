@@ -9,6 +9,8 @@ import java.util.Objects;
 import java.util.UUID;
 
 @Entity
+@Getter
+@Setter
 @NoArgsConstructor
 public class Clients {
     @Id
@@ -35,54 +37,6 @@ public class Clients {
         this.family = family;
         this.oth = oth;
         this.year = year;
-        this.sex = sex;
-    }
-
-    public UUID getId() {
-        return id;
-    }
-
-    public void setId(UUID id) {
-        this.id = id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getFamily() {
-        return family;
-    }
-
-    public void setFamily(String family) {
-        this.family = family;
-    }
-
-    public String getOth() {
-        return oth;
-    }
-
-    public void setOth(String oth) {
-        this.oth = oth;
-    }
-
-    public String getYear() {
-        return year;
-    }
-
-    public void setYear(String year) {
-        this.year = year;
-    }
-
-    public String getSex() {
-        return sex;
-    }
-
-    public void setSex(String sex) {
         this.sex = sex;
     }
 }
